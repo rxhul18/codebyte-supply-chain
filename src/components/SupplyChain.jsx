@@ -2,6 +2,7 @@ import { useState } from "react";
 import getContract from "../utils/contract";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
+import { Scanner } from '@yudiel/react-qr-scanner';
 
 const SupplyChain = () => {
   const [contract, setContract] = useState(null);
@@ -168,7 +169,7 @@ const SupplyChain = () => {
         <div className="border p-4 rounded">
           <h2 className="text-xl font-semibold mb-2">Product Lookup</h2>
           <div className="flex gap-2">
-            <Input
+            {/* <Input
               placeholder="Product ID"
               value={productID}
               onChange={(e) => setProductID(e.target.value)}
@@ -176,6 +177,10 @@ const SupplyChain = () => {
             <Button onClick={fetchProduct} disabled={loading}>
               Lookup
             </Button>
+            <Scanner onScan={(result) => console.log(result)} />
+            <Button onClick={fetchProduct} disabled={loading}>
+              Lookup
+            </Button> */}
           </div>
         </div>
 

@@ -36,17 +36,25 @@ const SupplyChain = () => {
     }
     setLoading(true);
     try {
-      const product = await contract.getProduct(productID);
+      const pid = BigInt(productID);
+      const product = await contract.products(pid);
+      
+      // Format the product data
       setProductDetails({
-        name: product[0],
-        description: product[1],
-        manufacturer: product[2],
-        location: product[3],
-        status: product[4],
-        timestamp: new Date(Number(product[5]) * 1000).toLocaleString()
+        id: product.id,
+        name: product.name,
+        manufacturer: product.manufacturer,
+        currentOwner: product.currentOwner,
+        manufactureDate: product.manufactureDate,
+        manufacturingLocation: product.manufacturingLocation,
+        status: product.status,
+        giTagNumber: product.giTagNumber,
+        updateCount: product.updateCount
       });
+      
       setError(null);
     } catch (error) {
+      console.error("Lookup error:", error);
       setError(error.message);
       setProductDetails(null);
     } finally {

@@ -12,16 +12,22 @@ const Navbar = () => {
           
           <div className="flex gap-4">
             <Link to="/">
-              <Button variant="ghost">Home</Button>
+              <Button variant="default">Home</Button>
             </Link>
             <Link to="/supply">
-              <Button variant="ghost">Products</Button>
+              <Button variant="default">Products</Button>
             </Link>
             <Link to="/roles">
-              <Button variant="ghost">Roles</Button>
+              <Button variant="default">Roles</Button>
             </Link>
             <Link to="/manufacturing">
-              <Button variant="ghost">Manufacturing</Button>
+              <Button variant="default">Manufacturing</Button>
+            </Link>
+            <Link to="/gitag">
+              <Button variant="default">GI Tag</Button>
+            </Link>
+            <Link to="/shipment">
+              <Button variant="default">Shipment</Button>
             </Link>
           </div>
         </div>
