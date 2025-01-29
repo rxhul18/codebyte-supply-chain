@@ -1,0 +1,665 @@
+[
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_manufacturer",
+				"type": "address"
+			}
+		],
+		"name": "addManufacturer",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_retailer",
+				"type": "address"
+			}
+		],
+		"name": "addRetailer",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_shipper",
+				"type": "address"
+			}
+		],
+		"name": "addShipper",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_name",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_location",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_giTagNumber",
+				"type": "uint256"
+			}
+		],
+		"name": "manufactureProduct",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "giTagNumber",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "region",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "traditionalMethod",
+				"type": "string"
+			}
+		],
+		"name": "GITagRegistered",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "productId",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			}
+		],
+		"name": "OwnershipTransferred",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "productId",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "manufacturer",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "giTagNumber",
+				"type": "uint256"
+			}
+		],
+		"name": "ProductManufactured",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "productId",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "enum SupplyChainManagement.ProductStatus",
+				"name": "newStatus",
+				"type": "uint8"
+			}
+		],
+		"name": "ProductStatusUpdated",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_giTagNumber",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "_region",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_traditionalMethod",
+				"type": "string"
+			}
+		],
+		"name": "registerGITag",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "productId",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "location",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "notes",
+				"type": "string"
+			}
+		],
+		"name": "ShipmentUpdateAdded",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_productId",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "_newOwner",
+				"type": "address"
+			}
+		],
+		"name": "transferOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_productId",
+				"type": "uint256"
+			},
+			{
+				"internalType": "enum SupplyChainManagement.ProductStatus",
+				"name": "_newStatus",
+				"type": "uint8"
+			},
+			{
+				"internalType": "string",
+				"name": "_location",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_notes",
+				"type": "string"
+			}
+		],
+		"name": "updateProductStatus",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_giTagNumber",
+				"type": "uint256"
+			}
+		],
+		"name": "getManufacturingInfoByGITag",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "giTagNumber",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "region",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "traditionalMethod",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "registrationDate",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "isValid",
+						"type": "bool"
+					}
+				],
+				"internalType": "struct SupplyChainManagement.GITagInfo",
+				"name": "giInfo",
+				"type": "tuple"
+			},
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "manufacturer",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "currentOwner",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "manufactureDate",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "manufacturingLocation",
+						"type": "string"
+					},
+					{
+						"internalType": "enum SupplyChainManagement.ProductStatus",
+						"name": "status",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint256",
+						"name": "giTagNumber",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "updateCount",
+						"type": "uint256"
+					},
+					{
+						"components": [
+							{
+								"internalType": "address",
+								"name": "updatedBy",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "timestamp",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string",
+								"name": "location",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "notes",
+								"type": "string"
+							},
+							{
+								"internalType": "enum SupplyChainManagement.ProductStatus",
+								"name": "newStatus",
+								"type": "uint8"
+							}
+						],
+						"internalType": "struct SupplyChainManagement.ShipmentUpdate[]",
+						"name": "shipmentHistory",
+						"type": "tuple[]"
+					}
+				],
+				"internalType": "struct SupplyChainManagement.ProductInfo[]",
+				"name": "_matchingProducts",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_productId",
+				"type": "uint256"
+			}
+		],
+		"name": "getProduct",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "manufacturer",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "currentOwner",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "manufactureDate",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "manufacturingLocation",
+						"type": "string"
+					},
+					{
+						"internalType": "enum SupplyChainManagement.ProductStatus",
+						"name": "status",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint256",
+						"name": "giTagNumber",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "updateCount",
+						"type": "uint256"
+					},
+					{
+						"components": [
+							{
+								"internalType": "address",
+								"name": "updatedBy",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "timestamp",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string",
+								"name": "location",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "notes",
+								"type": "string"
+							},
+							{
+								"internalType": "enum SupplyChainManagement.ProductStatus",
+								"name": "newStatus",
+								"type": "uint8"
+							}
+						],
+						"internalType": "struct SupplyChainManagement.ShipmentUpdate[]",
+						"name": "shipmentHistory",
+						"type": "tuple[]"
+					}
+				],
+				"internalType": "struct SupplyChainManagement.ProductInfo",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_productId",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_updateId",
+				"type": "uint256"
+			}
+		],
+		"name": "getShipmentUpdate",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "updatedBy",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "timestamp",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "location",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "notes",
+				"type": "string"
+			},
+			{
+				"internalType": "enum SupplyChainManagement.ProductStatus",
+				"name": "newStatus",
+				"type": "uint8"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "giTags",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "giTagNumber",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "region",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "traditionalMethod",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "registrationDate",
+				"type": "uint256"
+			},
+			{
+				"internalType": "bool",
+				"name": "isValid",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "owner",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "productCount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "products",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"internalType": "address",
+				"name": "manufacturer",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "currentOwner",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "manufactureDate",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "manufacturingLocation",
+				"type": "string"
+			},
+			{
+				"internalType": "enum SupplyChainManagement.ProductStatus",
+				"name": "status",
+				"type": "uint8"
+			},
+			{
+				"internalType": "uint256",
+				"name": "giTagNumber",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "updateCount",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
